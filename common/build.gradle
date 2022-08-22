@@ -1,0 +1,58 @@
+import app.kochergin.stat.Libs
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion Libs.AndroidX.Compose.compilerVersion
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+}
+
+dependencies {
+    implementation Libs.Kotlin.stdlib
+    implementation Libs.AndroidX.Compose.runtime
+    implementation Libs.AndroidX.Compose.foundation
+    implementation Libs.AndroidX.Compose.material
+    implementation Libs.AndroidX.Compose.materialWindow
+    implementation Libs.AndroidX.Compose.layout
+    implementation Libs.AndroidX.Compose.animation
+    implementation Libs.AndroidX.Compose.toolingPreview
+    debugImplementation Libs.AndroidX.Compose.tooling
+    implementation Libs.AndroidX.Lifecycle.navigation
+    implementation Libs.AndroidX.Lifecycle.viewModelCompose
+    implementation Libs.Dagger.runtime
+    kapt Libs.Dagger.compiler
+
+    androidTestImplementation Libs.JUnit.junit
+    androidTestImplementation Libs.Kotlin.Coroutines.test
+}

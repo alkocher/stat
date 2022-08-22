@@ -1,0 +1,25 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "stat"
+
+include ':app',
+        ':design',
+        ':common',
+        ':feature:main',
+        ':feature:settings:api',
+        ':feature:settings:impl',
+        ':feature:currate:api',
+        ':feature:currate:impl'
